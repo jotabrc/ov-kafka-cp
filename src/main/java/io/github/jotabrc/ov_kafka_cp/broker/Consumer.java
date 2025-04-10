@@ -3,7 +3,6 @@ package io.github.jotabrc.ov_kafka_cp.broker;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -12,7 +11,7 @@ import java.util.Optional;
 import java.util.Properties;
 
 @Component
-public class Consumer implements CommandLineRunner {
+public class Consumer {
 
     @Autowired
     private BrokerConfig brokerConfig;
@@ -49,11 +48,5 @@ public class Consumer implements CommandLineRunner {
             if (consumer != null)
                 consumer.close();
         }
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        properties = getProperties();
-        consumer();
     }
 }
