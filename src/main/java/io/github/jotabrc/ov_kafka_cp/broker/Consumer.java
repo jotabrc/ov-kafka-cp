@@ -11,11 +11,10 @@ import java.util.Optional;
 import java.util.Properties;
 
 @Component
-public class Consumer {
+public abstract class Consumer {
 
     @Autowired
-    private BrokerConfig brokerConfig;
-    private Properties properties;
+    protected BrokerConfig brokerConfig;
 
     private Properties getProperties() {
         Properties props = new Properties();
@@ -25,8 +24,8 @@ public class Consumer {
         Optional<String> value = Optional.ofNullable(brokerConfig.getValueDeserializer());
 
         props.put("bootstrap.servers", servers.orElse("localhost:9092"));
-        props.put("key.serializer", key.orElse("org.springframework.kafka.support.serializer.JsonDeserializer"));
-        props.put("value.serializer", value.orElse("org.springframework.kafka.support.serializer.JsonDeserializer"));
+        props.put("key.deserializer", key.orElse("org.springframework.kafka.support.serializer.JsonDeserializer"));
+        props.put("value.deserializer", value.orElse("org.springframework.kafka.support.serializer.JsonDeserializer"));
 
         return props;
     }
@@ -34,7 +33,7 @@ public class Consumer {
     public void consumer(String... topics) {
         KafkaConsumer<String, String> consumer = null;
         try {
-            consumer = new KafkaConsumer<>(properties);
+            consumer = new KafkaConsumer<>(getProperties());
             consumer.subscribe(Arrays.asList(topics));
 
             while (true) {
