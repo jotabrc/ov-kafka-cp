@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.jotabrc</groupId>
 	<artifactId>ov-kafka-cp</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.2</version>
 	<name>ov-kafka-cp</name>
 	<description>OV Kafka Consumer/Producer</description>
 	<url>https://github.com/jotabrc/ov-kafka-cp</url>

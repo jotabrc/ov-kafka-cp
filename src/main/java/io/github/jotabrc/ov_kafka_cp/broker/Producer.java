@@ -28,8 +28,8 @@ public class Producer {
         Properties props = new Properties();
 
         Optional<String> servers = Optional.ofNullable(brokerConfig.getBootstrapServers());
-        Optional<String> key = Optional.ofNullable(brokerConfig.getKeyDeserializer());
-        Optional<String> value = Optional.ofNullable(brokerConfig.getValueDeserializer());
+        Optional<String> key = Optional.ofNullable(brokerConfig.getKeySerializer());
+        Optional<String> value = Optional.ofNullable(brokerConfig.getValueSerializer());
 
         props.put("bootstrap.servers", servers.orElse("localhost:9092"));
         props.put("key.serializer", key.orElse("org.springframework.kafka.support.serializer.JsonSerializer"));
