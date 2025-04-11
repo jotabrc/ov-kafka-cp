@@ -16,7 +16,7 @@ public abstract class Consumer {
     @Autowired
     protected BrokerConfig brokerConfig;
 
-    private Properties getProperties() {
+    protected Properties getProperties() {
         Properties props = new Properties();
 
         Optional<String> servers = Optional.ofNullable(brokerConfig.getBootstrapServers());
