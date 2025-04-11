@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.github.jotabrc.ov_kafka_cp.broker.AutoConfiguration
