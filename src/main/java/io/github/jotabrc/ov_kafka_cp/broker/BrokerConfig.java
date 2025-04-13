@@ -11,14 +11,17 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.github.jotabrc.ov_kafka_cp.ServerConstant.GROUP_ID;
+import static io.github.jotabrc.ov_kafka_cp.ServerConstant.SERVERS;
+
 @Configuration
 public class BrokerConfig {
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "io.github.jotabrc");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, SERVERS);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         config.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
